@@ -1,10 +1,12 @@
 import { getResponseFromText } from "@/lib/ai/getResponseFromText";
+import { uploadOnCloudinary } from "@/lib/uploadToCloudinary";
 import { File } from "buffer";
-import { writeFile } from "fs/promises"; // Using promises for async compatibility
+import { unlinkSync, writeFile } from "fs"; // Using promises for async compatibility
 import { NextRequest, NextResponse } from "next/server";
 import { join } from "path";
 import PdfParse from "pdf-parse";
-
+import { buffer } from "stream/consumers";
+import fs from 'fs';
 
 const removeHeaderFooter = (text: string, threshold = 0.01) => {
   const nonEnglishRegex = /[^a-zA-Z0-9\s.,?!'"()\[\]{}:;-]/g;
@@ -45,19 +47,55 @@ export async function POST(req: NextRequest) {
 
     // Initialize an object to store extracted text from PDFs
     const exam_paper: Record<string, string> = {};
-
-    // Iterate through all files, extract content from each
+    const pdf_url: Record<string, string> = {};
+  
     for (const file of files) {
-      const byteArray = await file.arrayBuffer(); // Get the file content
-      const buffer = Buffer.from(byteArray); // Convert to buffer
-
-      const extractedData = await PdfParse(buffer); // Extract text from PDF
-      const cleanedData = removeHeaderFooter(extractedData.text)
-      exam_paper[file.name] = cleanedData; // Store extracted text in exam_paper
+      try {
+        // Convert file to ArrayBuffer and then to Buffer
+        const byteArray = await file.arrayBuffer();
+        const buffer = Buffer.from(byteArray);
+  
+        // Determine the path to the 'public' folder
+        const rootPath = process.cwd(); // Get the current working directory
+        const publicPath = join(rootPath, 'public', file.name); // Append the filename
+  
+        // Write the file to the 'public' folder
+        await new Promise((resolve, reject) => {
+          writeFile(publicPath, buffer, (err) => {
+            if (err) {
+              reject(err);
+            } else {
+              console.log(`File '${file.name}' uploaded to public folder.`);
+              resolve('success')
+            }
+          });
+        });
+  
+        // Upload the file to Cloudinary
+        const cloudinaryUrl = await uploadOnCloudinary(publicPath);
+        pdf_url[file.name] = cloudinaryUrl!;
+  
+        // Parse the PDF and clean the text
+        const extractedData = await PdfParse(buffer);
+        const cleanedData = removeHeaderFooter(extractedData.text);
+  
+        // Store the extracted text in 'exam_paper'
+        exam_paper[file.name] = cleanedData;
+  
+        // Remove the written file after processing
+        unlinkSync(publicPath);
+        console.log(`File '${file.name}' deleted from public folder.`);
+  
+      } catch (error) {
+        console.error(`Error processing file '${file.name}':`, error);
+      }
     }
 
-    console.log(exam_paper, "original data");
+    console.log(exam_paper, pdf_url, "original data");
     const analayzedData = await getResponseFromText(exam_paper)
+    console.log(analayzedData,"is meee");
+    
+    // console.log(typeof(analayzedData),JSON.parse(analayzedData!),"is type -----------------");
 
     return NextResponse.json({
       success: true,

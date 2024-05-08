@@ -1,0 +1,74 @@
+{
+    "imp_keywords": ["python", "loop concepts", "arithmetic operations", "data structures", "file handling", "modules", "control structures", "string operations"],
+    "topic_frequency": {
+      "high": ["loop concepts", "file handling", "data structures", "arithmetic operations"],
+      "less": ["modules", "control structures", "string operations"]
+    },
+    "imp_qa": ["Explain if and if-else statement with a suitable example.", "Write a Python program to display patterns using loop concept.", "Explain how to create a Set in Python by giving example.", "Explain how to create a Dictionary in Python.", "List any six built-in functions of Python.", "Explain file handling basic Python function to open and close the text file.", "Explain usage of given string methods in Python."],        
+    "exam_difficulty": {
+      "exam1": "moderate",
+      "exam2": "moderate"
+    },
+    "all_questions": {
+      "exam1": [
+        "Q1 (a) List out features and application of python.",
+        "Q1 (b) Explain Input and Output statements in Python by giving examples.",      
+        "Q1 (c) List out arithmetic operations.",
+        "Q2 (a) Explain if and if-else statement with a suitable example.",
+        "Q2 (b) Explain while loop with a suitable example.",
+        "Q2 (c) Create a Python program to display patterns using loop concept.",        
+        "Q3 (a) Explain how to create a Set in Python by giving example.",
+        "Q3 (b) Explain how to create Dictionary in Python.",
+        "Q3 (c) Write a Python program to perform operations on the list.",
+        "Q4 (a) List any six built-in functions of Python.",
+        "Q4 (b) Explain a random module of Python with a suitable example.",
+        "Q4 (c) Create a user-defined module with simple functions and import functions.",
+        "Q5 (a) Explain file handling basic Python function to open and close the text file.",
+        "Q5 (b) Explain to access string elements using index operator with an example.",
+        "Q5 (c) Write a Python program to read a text file and count occurrences of each alphabet."
+      ],
+      "exam2": [
+        "Q1 (a) Explain if-elif-else control structure in Python.",
+        "Q1 (b) Explain type casting in Python.",
+        "Q1 (c) Explain features of Python programming language.",
+        "Q2 (a) Explain for loop with example.",
+        "Q2 (b) Write a program to find the sum of a series.",
+        "Q2 (c) Write a program to find if a given year is a leap year.",
+        "Q3 (a) Write a program to find the number of times an element occurs in the list.",
+        "Q3 (b) Differentiate between append() and extend() methods of list.",
+        "Q3 (c) Write an automated censor program that reads the text from a file.",     
+        "Q4 (a) Explain addition and modification of items in a dictionary with an example.",
+        "Q4 (b) Match given statements with their outputs for set operations.",
+        "Q4 (c) Write a program to print Fibonacci sequence up to n numbers using recursion.",
+        "Q5 (a) Explain math functions like exp(), floor(), pow().",
+        "Q5 (b) Write a program to plot sine wave using matplotlib.",
+        "Q5 (c) List various file accessing modes and explain each."
+      ]
+    },
+    "blueprint": {
+      "file1": {
+        "Q1": {
+          "topic": ["features and application of python", "Input and Output statements", "arithmetic operations"],
+          "marks": 3,
+          "type": "theory"
+        },
+        "Q2": {
+          "topic": ["if and if-else statement", "while loop", "displaying patterns using loop"],
+          "marks": 4,
+          "type": "theory"
+        }
+      },
+      "file2": {
+        "Q1": {
+          "topic": ["if-elif-else control structure", "type casting in Python", "features of Python programming language"],
+          "marks": 3,
+          "type": "theory"
+        },
+        "Q2": {
+          "topic": ["for loop", "sum of a series", "year is leap year or not"],
+          "marks": 4,
+          "type": "theory"
+        }
+      }
+    }
+  }
