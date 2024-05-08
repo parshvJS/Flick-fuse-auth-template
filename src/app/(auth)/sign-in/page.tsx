@@ -18,6 +18,7 @@ import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import { Loader2 } from "lucide-react";
 import { signInSchema } from "@/schemas/signInSchema";
+import Link from "next/link";
 
 const Login = () => {
     const [isSubmitting, setIsSubmitting] = useState(false);
@@ -34,15 +35,15 @@ const Login = () => {
 
     const onSubmit = async (data: z.infer<typeof signInSchema>) => {
         setIsSubmitting(true);
-        console.log(data,"is here");
-        
+        console.log(data, "is here");
+
         const res = await signIn('credentials', {
             identifier: data.identifier,
             password: data.password,
-            redirect:false
+            redirect: false
         });
-        console.log(res,"is her");
-        
+        console.log(res, "is her");
+
         if (res?.error) {
             toast({
                 title: "Login Failed",
@@ -104,7 +105,7 @@ const Login = () => {
                         />
 
                         {/* Submit button */}
-                        <div className="mt-6">
+                        <div className="mt-6 flex flex-col justify-center items-center gap-4 ">
                             <Button
                                 type="submit"
                                 className="w-full bg-black hover:bg-gray-600"
@@ -118,6 +119,12 @@ const Login = () => {
                                     'Log In'
                                 )}
                             </Button>
+                            <div className="flex gap-2">
+                                <p>Don't have Account ?</p>
+                                <Link href={`/sign-up`}>
+                                    <b>Sign Up</b>
+                                </Link>
+                            </div>
                         </div>
                     </form>
                 </Form>

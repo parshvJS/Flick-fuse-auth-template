@@ -8,8 +8,10 @@ export async function sentVerificationEmail(
     verifyCode: string
 ): Promise<ApiResponse> {
     try {
+        console.log(email,username,verifyCode,"is getting in email");
+        
         const sentEmail = await resend.emails.send({
-            from: 'onboarding@resend.dev',
+            from: 'parshvsheth.example.com',
             to: email,
             subject: 'FeedHub | Email Verification OTP',
             react: EmailVerification({ username, otp: verifyCode })

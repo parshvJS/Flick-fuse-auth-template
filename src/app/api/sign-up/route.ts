@@ -22,28 +22,31 @@ export async function POST(request: NextRequest) {
 
         const existingUserByEmail = await userModel.findOne({ email });
         
-        // generating OTP details
-        const verificationOTP = Math.floor(99999 + Math.random() * 900000).toString()
-        const verificationOTPExpiry = new Date(Date.now() + 3600000);
+        // // generating OTP details
+        // const verificationOTP = Math.floor(99999 + Math.random() * 900000).toString()
+        // const verificationOTPExpiry = new Date(Date.now() + 3600000);
         
 
         if (existingUserByEmail) {
             if (existingUserByEmail.isVerified) {
+                console.log("here 2");
                 return NextResponse.json({
                     success: false,
                     message: "User with this email already exist !"
                 })
             }
-            else {
-                // user is not verified | give new opt
-                existingUserByEmail.verifyCode = verificationOTP;
-                existingUserByEmail.verifyCodeExpiry = verificationOTPExpiry;
-                await existingUserByEmail.save();
-            }
+            // else {
+            //     console.log("here 2");
+            //     // user is not verified | give new opt
+            //     existingUserByEmail.verifyCode = verificationOTP;
+            //     existingUserByEmail.verifyCodeExpiry = verificationOTPExpiry;
+            //     await existingUserByEmail.save();
+            // }
         }
         else {
             // creating new user
-
+            console.log("here 2222");
+            
             //make password hashed
             const hashedPassword = await bcrypt.hash(password,13);
 
@@ -52,27 +55,27 @@ export async function POST(request: NextRequest) {
                 username:username,
                 email:email,
                 password:hashedPassword,
-                verifyCode: verificationOTP,
-                verifyCodeExpiry: verificationOTPExpiry,
+                // verifyCode: verificationOTP,
+                // verifyCodeExpiry: verificationOTPExpiry,
                 messages: [],
             })
 
             await newUser.save();
         }
 
-        // sent verification email
-        const VerifyUserEmail = await sentVerificationEmail(email, username, verificationOTP!)
-        console.log("here 1");
+        // // sent verification email
+        // const VerifyUserEmail = await sentVerificationEmail(email, username, verificationOTP!)
+        // console.log("here 1");
         
-        if (!VerifyUserEmail.success) {
-            return NextResponse.json({
-                success: false,
-                message: VerifyUserEmail.message
-            }, { status: 500 })
-        }
+        // if (!VerifyUserEmail.success) {
+        //     return NextResponse.json({
+        //         success: false,
+        //         message: VerifyUserEmail.message
+        //     }, { status: 500 })
+        // }
         return NextResponse.json({
             success: true,
-            message: "user Registered Successfully Check Email Box !"
+            message: "user Registered Successfully !"
         }, { status: 200 })
         
     } catch (error: any) {

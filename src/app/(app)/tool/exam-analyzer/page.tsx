@@ -4,7 +4,7 @@ import React, { useState, ChangeEvent } from 'react';
 const Page = () => {
   // Use File[] to maintain an array of files
   const [files, setFiles] = useState<File[]>([]);
-
+    const [text,setText] = useState('')
   const onFileChange = (e: ChangeEvent<HTMLInputElement>) => {
     const newFiles = Array.from(e.target.files ?? []); // Convert FileList to array
     // Append new files to the existing state
@@ -26,8 +26,10 @@ const Page = () => {
         body: form,
       });
 
+      console.log(res)
+
       const result = await res.json();
-      console.log('Response:', result);
+      console.log('Response:', result.data);
     } catch (error) {
       console.error('Error submitting files:', error);
     }
