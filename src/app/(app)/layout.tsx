@@ -1,3 +1,4 @@
+'use client'
 import { Sheet, SheetContent, SheetHeader, SheetTitle, SheetTrigger } from "@/components/ui/sheet";
 import {
   Accordion,
@@ -5,23 +6,33 @@ import {
   AccordionItem,
   AccordionTrigger,
 } from "@/components/ui/accordion";
+import {
+  DropdownMenu,
+  DropdownMenuCheckboxItem,
+  DropdownMenuContent,
+  DropdownMenuLabel,
+  DropdownMenuSeparator,
+  DropdownMenuTrigger,
+} from "@/components/ui/dropdown-menu"
+import { DropdownMenuCheckboxItemProps } from "@radix-ui/react-dropdown-menu"
+
 import { ScrollArea } from "@/components/ui/scroll-area";
 import { cn } from "@/lib/utils";
 import {
   ChevronDownIcon,
   Home,
-  Music,
-  User,
-  Mic2,
-  Play,
-  SquareStack,
-  RadioIcon,
   Menu,
   Album,
   PencilRuler,
+  CircleUserRound,
+  Loader2,
+  LogOut,
+  UserCircle
 } from "lucide-react";
 import Link from "next/link";
-import React from "react";
+import React, { useEffect, useState } from "react";
+import { Button } from "@/components/ui/button";
+import { signOut, useSession } from "next-auth/react";
 
 type Menu = {
   label: string;
@@ -38,6 +49,22 @@ type Submenu = {
 };
 
 export default function Sidebar({ children }: { children: React.ReactNode }) {
+  const { data: session, status } = useSession();
+  const [isLoading, setIsLoading] = useState(false);
+
+  useEffect(() => {
+    function checkLoadingSesstion() {
+      if (status === 'loading') {
+        setIsLoading(true)
+      }
+      if (status === "authenticated") {
+        setIsLoading(false)
+      }
+    }
+    checkLoadingSesstion()
+  }, [status])
+
+
   const menus: Menu[] = [
     {
       label: "Dashboard",
@@ -46,16 +73,16 @@ export default function Sidebar({ children }: { children: React.ReactNode }) {
       href: "/dashboard/main",
     },
     {
-      label:"Tools",
-      name:"Exam Analyzer",
-      href:"/tool/exam-analyzer",
-      icon:<Album  size={15} className="mr-2"/>
+      label: "Tools",
+      name: "Exam Analyzer",
+      href: "/tool/exam-analyzer",
+      icon: <Album size={15} className="mr-2" />
     },
     {
-      label:"Tools",
-      name:"Answer Book",
-      href:"/tool/answer-generator",
-      icon:<PencilRuler size={15} className="mr-2" />
+      label: "Tools",
+      name: "Answer Book",
+      href: "/tool/answer-generator",
+      icon: <PencilRuler size={15} className="mr-2" />
     }
 
   ];
@@ -66,9 +93,9 @@ export default function Sidebar({ children }: { children: React.ReactNode }) {
     <div className="flex h-screen">
       {/* Sidebar for desktop */}
       <ScrollArea className="border-r-2 border-gray-500 lg:w-[15%] sm:w-full bg-white dark:bg-background lg:block hidden">
-        <div className="md:px-4 sm:p-0 mt-5 flex flex-col justify-between">
+        <div className="md:px-4 sm:p-0 flex flex-col justify-between h-screen overflow-clip">
           <div>
-            <p className="pl-4 pb-5 text-blue-700 font-bold">Paperbrock.</p>
+            <p className="pl-4 pb-5 text-blue-700 font-bold mt-5">Paperbrock.</p>
             {uniqueLabels.map((label, index) => (
               <React.Fragment key={label}>
                 {label && (
@@ -140,10 +167,36 @@ export default function Sidebar({ children }: { children: React.ReactNode }) {
                   ))}
               </React.Fragment>
             ))}
+
           </div>
 
-          <div className="flex p-4">
-            sdfsdf
+          <div className="p-4 flex items-start">
+            {
+              isLoading ?
+                <div className="flex gap-4">
+                  <Loader2 />
+                  Loading Your Details !
+                </div>
+                : <DropdownMenu>
+                  <DropdownMenuTrigger >
+                    <Button variant="ghost">
+                      <div className="flex gap-4">
+                        <UserCircle size={20} />
+                        <p>{session?.user?.username}</p>
+                      </div>
+                    </Button>
+                  </DropdownMenuTrigger>
+                  <DropdownMenuContent className="w-56 bg-gray-200 shadow-sm text-black">
+                    <DropdownMenuLabel>My Account</DropdownMenuLabel>
+                    <DropdownMenuSeparator />
+                    <DropdownMenuCheckboxItem>
+                      <button className="flex gap-3" onClick={() => signOut()}>
+                        <p className="text-red-700">Logout</p>
+                      </button>
+                    </DropdownMenuCheckboxItem>
+                  </DropdownMenuContent>
+                </DropdownMenu>
+            }
           </div>
         </div>
       </ScrollArea>
@@ -237,6 +290,7 @@ export default function Sidebar({ children }: { children: React.ReactNode }) {
                   </React.Fragment>
                 ))}
               </div>
+              
             </ScrollArea>
           </SheetContent>
         </Sheet>
