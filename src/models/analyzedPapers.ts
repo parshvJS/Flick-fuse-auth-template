@@ -1,52 +1,56 @@
-import mongoose,{Schema,Document} from "mongoose";
+import mongoose, { Schema, Document } from "mongoose";
 
-export interface User extends Document{
-    username:string;
-    imp_keywords:string;
-    
-    verifyCode:string;
-    isVerified:boolean;
-    verifyCodeExpiry : Date;
-    isAcceptingMessage:boolean
+// Define the interface for Exam data
+export interface Exam extends Document {
+    imp_keywords: string;
+    high_topic_frequency: string;
+    low_topic_frequency: string;
+    imp_qa: string;
+    exam_difficulty: string;
+    all_questions: string;
+    blueprint: string;
+    pdf_url: string[];
+    exam_name: string;
+    username:string
 }
 
-
-const UserSchema:Schema<User> = new mongoose.Schema({
+// Define the schema for analyzed papers
+const analyzedPaperSchema = new mongoose.Schema({
+    imp_keywords: {
+        type: String,
+    },
+    high_topic_frequency: {
+        type: String,
+        required: true,
+    },
+    low_topic_frequency: {
+        type: String,
+    },
+    imp_qa: {
+        type: String,
+    },
+    exam_difficulty: {
+        type: String,
+    },
+    all_questions: {
+        type: String,
+    },
+    blueprint: {
+        type: String,
+    },
+    pdf_url: {
+        type: [String], // Correct array of strings
+    },
+    exam_name: {
+        type: String,
+        required: true, // Ensure exam name is required
+    },
     username:{
-        type:String,
-        required:[true,"Username is required !"],
-        unique:true,
-        trim:true
-    },
-    imp_keywords:{
-        type:String,
-        required:[true,"email is required !"],
-        unique:true,
-    },
-    password:{
-        type:String,
-        required:true
-    },
-    verifyCode:{
-        type:String,
-    },
-    verifyCodeExpiry:{
-        type:Date
-    },
-    isVerified:{
-        type:Boolean,
-        default:true
-    },
-    isAcceptingMessage:{
-        type:Boolean,
-        default:true
+        type:String
     }
+}, { timestamps: true });
 
-})
+// Create or use the correct model
+const analyzedPaperModel = mongoose.models.AnalyzedExam as mongoose.Model<Exam> || mongoose.model<Exam>("AnalyzedExam", analyzedPaperSchema);
 
-const userModel = mongoose.models.User as mongoose.Model<User> || mongoose.model<User>("User",UserSchema);
-
-// const MessageModel = mongoose.models.Message as mongoose.Model<Message> || mongoose.model<Message>("Message",MessageSchema);
-
-export default userModel;
-
+export default analyzedPaperModel;

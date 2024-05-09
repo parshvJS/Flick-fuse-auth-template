@@ -46,12 +46,12 @@ function createPromptFromObject(examObject: Record<string, string>): string {
     3.Create an object containing  further objects:
         i.imp_keywords: Identify and list topics 	fundamentally asked in the exam papers.
         ii. topic_freaquency : frequency contain 2 further objects 1)high:extract list of topics which are more frequently asked,2)less :extract list of topics which are less frequently asked  
-        iii.imp_qa: Extract and list the most f	requently asked questions across all exam papers.
+        iii.imp_qa: Extract and list the most frequently asked questions across all exam papers.
         iv .  exam_difficulty :  analayze all exam papers and determine difficulty of each exam paper
-        v.	all_questions : extract question of each exam paper  contained in exam_paper object having same key  available in exam_paper    
+        v.	all_questions : extract question,sub question ot any type of question identifined in each exam paper   of each exam paper   contained in exam_paper object having same key  available in exam_paper    
     4. after every question ends there is an number which indicates marks of that particular question, indentify question number change  and take track of exam paper blueprint  and return question wise blue print in js object ,i am using react flow to showcase this information  do generate nodes and  edges 
     Exam Paper Object
-    5.give simple text output,Simply focus on delivering the structured JavaScript object avoid javascript notation at start with the information required dont give any explaination or summery,strictly dont leave anything and generate large and whole response without avoiding anything.
+    5.give simple text output,JavaScript object Strictly avoid javascript notation at start with the information required dont give any explaination or summery,strictly dont leave anything and generate large and whole response without avoiding anything.
     `;
 
     for (const [key, value] of Object.entries(examObject)) {
