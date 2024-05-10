@@ -49,20 +49,36 @@ const Page = () => {
   };
 
   return (
-    <div>
-      <form onSubmit={onSubmit}>
-        <input type="file" onChange={onFileChange} multiple />
-        <button type="submit">Submit</button>
-      </form>
-      <div>
-        <h3>Files to be uploaded:</h3>
-        <ul>
-          {files.map((file, index) => (
-            <li key={index}>{file.name}</li>
-          ))}
-        </ul>
+
+    <div className='p-4'>
+      {/* heading */}
+      <div>`
+        <p className='text-lg md:text-md font-bold'>Exam Analyzer</p>
       </div>
     </div>
+
+
+
+
+
+    // testing api
+
+
+
+    // <div>
+    //   <form onSubmit={onSubmit}>
+    //     <input type="file" onChange={onFileChange} multiple />
+    //     <button type="submit">Submit</button>
+    //   </form>
+    //   <div>
+    //     <h3>Files to be uploaded:</h3>
+    //     <ul>
+    //       {files.map((file, index) => (
+    //         <li key={index}>{file.name}</li>
+    //       ))}
+    //     </ul>
+    //   </div>
+    // </div>
   );
 };
 
