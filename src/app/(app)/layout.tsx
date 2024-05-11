@@ -92,7 +92,7 @@ export default function Sidebar({ children }: { children: React.ReactNode }) {
   return (
     <div className="flex h-screen flex-col md:flex-row">
       {/* Sidebar for desktop */}
-      <ScrollArea className="border-r-2 border-gray-500 lg:w-[15%] sm:w-full bg-white dark:bg-background lg:block hidden">
+      <ScrollArea className="border-r-2 border-gray-500 md:w-[30%] lg:w-[20%] sm:w-full bg-white dark:bg-background lg:block hidden">
         <div className="md:px-4 sm:p-0 flex flex-col justify-between  h-screen">
           <div>
             <p className="pl-4 pb-5 text-blue-700 font-bold mt-5">Paperbrock.</p>
@@ -320,9 +320,13 @@ export default function Sidebar({ children }: { children: React.ReactNode }) {
       </div>
 
       {/* child  */}
-      <div className="w-full md:w-[85%]   h-screen md:p-0 px-4">
+      <ScrollArea className="w-full h-screen">
+
+      <div className="w-full h-screen md:p-0 px-4">
         {children}
       </div>
+      </ScrollArea>
+
     </div>
   );
 }
