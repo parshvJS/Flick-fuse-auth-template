@@ -23,7 +23,7 @@ import { Loader2 } from 'lucide-react'
 import { Input } from '@/components/ui/input'
 import { Button } from '@/components/ui/button'
 
-function page() {
+function Page() {
   const [isSubmiting, setIsSubmiting] = useState(false)
 
   const router = useRouter()
@@ -76,7 +76,7 @@ function page() {
         <h1 className="text-2xl font-bold text-center mb-2">Welcome To FlickFuse</h1>
         <h2 className="text-lg text-center text-gray-600 mb-6">Enter Your Verification Code</h2>
         <p className="text-center text-gray-600 mb-6">
-          Please check your email for the verification code we've sent you.
+          Please check your email for the verification code weve sent you.
         </p>
 
         <Form {...form}>
@@ -123,4 +123,4 @@ function page() {
   )
 }
 
-export default page
+export default Page

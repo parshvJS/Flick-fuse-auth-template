@@ -111,15 +111,14 @@ const UserProfile = () => {
               <ul>
                 {seachResult.map((result: string, index) => {
                   // Convert result to string if it's not already a string
-                  const resultString = typeof result === 'string' ? result : result.toString();
                   return (
                     <Button
-                      onClick={() => router.replace(`/result?search=${resultString.replace(" ", "+")}`)}
+                      onClick={() => router.replace(`/result?search=${result.replace(" ", "-")}`)}
                       key={index}
                       variant={"ghost"}
                       className='w-full flex justify-between p-4'
                     >
-                      <div>{resultString}</div>
+                      <div>{result}</div>
                       <ArrowUpRight />
                     </Button>
                   );

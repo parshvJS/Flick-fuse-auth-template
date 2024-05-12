@@ -10,6 +10,11 @@ export interface User extends Document{
     isAcceptingMessage:boolean
 }
 
+export interface Message extends Document {
+    content: string;
+    createdAt: Date;
+  }
+  
 
 const UserSchema:Schema<User> = new mongoose.Schema({
     username:{

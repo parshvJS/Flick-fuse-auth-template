@@ -103,7 +103,9 @@ export async function POST(req: NextRequest) {
 
     console.log("Analyzing extracted data...");
     const analayzedData = await getResponseFromText(exam_paper);
-    const cleanedAnalayzedData = analayzedData?.replace("`", "").replace("js", "").replace("javascript", "")
+    const cleanedAnalayzedData = analayzedData?.replaceAll('`','').replaceAll('javascript','').replaceAll('js','');
+    console.log(cleanedAnalayzedData,"is here -----------------------------------------------------------",analayzedData,"is not ```````````````````````````````````````");
+    
     console.log("Saving analyzed data to database...");
     const analyzedJson = JSON.parse(cleanedAnalayzedData!);
     console.log(analyzedJson, "hhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhh");
@@ -123,7 +125,10 @@ export async function POST(req: NextRequest) {
     });
 
     const response = await newExamAnalyzed.save();
-
+    const resSend = {
+      id:response._id,
+      analayzedResponse:analayzedData
+    }
     if (!response) {
       console.log("Error saving to database");
       return NextResponse.json({
@@ -136,7 +141,7 @@ export async function POST(req: NextRequest) {
     return NextResponse.json({
       success: true,
       message: "All Files Saved and Analyzed Successfully!",
-      data: analayzedData,
+      data: resSend,
     });
 
   } catch (error: any) {

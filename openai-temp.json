@@ -1,74 +1,181 @@
 {
-    "imp_keywords": ["python", "loop concepts", "arithmetic operations", "data structures", "file handling", "modules", "control structures", "string operations"],
-    "topic_frequency": {
-      "high": ["loop concepts", "file handling", "data structures", "arithmetic operations"],
-      "less": ["modules", "control structures", "string operations"]
-    },
-    "imp_qa": ["Explain if and if-else statement with a suitable example.", "Write a Python program to display patterns using loop concept.", "Explain how to create a Set in Python by giving example.", "Explain how to create a Dictionary in Python.", "List any six built-in functions of Python.", "Explain file handling basic Python function to open and close the text file.", "Explain usage of given string methods in Python."],        
-    "exam_difficulty": {
-      "exam1": "moderate",
-      "exam2": "moderate"
-    },
-    "all_questions": {
-      "exam1": [
-        "Q1 (a) List out features and application of python.",
-        "Q1 (b) Explain Input and Output statements in Python by giving examples.",      
-        "Q1 (c) List out arithmetic operations.",
-        "Q2 (a) Explain if and if-else statement with a suitable example.",
-        "Q2 (b) Explain while loop with a suitable example.",
-        "Q2 (c) Create a Python program to display patterns using loop concept.",        
-        "Q3 (a) Explain how to create a Set in Python by giving example.",
-        "Q3 (b) Explain how to create Dictionary in Python.",
-        "Q3 (c) Write a Python program to perform operations on the list.",
-        "Q4 (a) List any six built-in functions of Python.",
-        "Q4 (b) Explain a random module of Python with a suitable example.",
-        "Q4 (c) Create a user-defined module with simple functions and import functions.",
-        "Q5 (a) Explain file handling basic Python function to open and close the text file.",
-        "Q5 (b) Explain to access string elements using index operator with an example.",
-        "Q5 (c) Write a Python program to read a text file and count occurrences of each alphabet."
-      ],
-      "exam2": [
-        "Q1 (a) Explain if-elif-else control structure in Python.",
-        "Q1 (b) Explain type casting in Python.",
-        "Q1 (c) Explain features of Python programming language.",
-        "Q2 (a) Explain for loop with example.",
-        "Q2 (b) Write a program to find the sum of a series.",
-        "Q2 (c) Write a program to find if a given year is a leap year.",
-        "Q3 (a) Write a program to find the number of times an element occurs in the list.",
-        "Q3 (b) Differentiate between append() and extend() methods of list.",
-        "Q3 (c) Write an automated censor program that reads the text from a file.",     
-        "Q4 (a) Explain addition and modification of items in a dictionary with an example.",
-        "Q4 (b) Match given statements with their outputs for set operations.",
-        "Q4 (c) Write a program to print Fibonacci sequence up to n numbers using recursion.",
-        "Q5 (a) Explain math functions like exp(), floor(), pow().",
-        "Q5 (b) Write a program to plot sine wave using matplotlib.",
-        "Q5 (c) List various file accessing modes and explain each."
-      ]
-    },
-    "blueprint": {
-      "file1": {
-        "Q1": {
-          "topic": ["features and application of python", "Input and Output statements", "arithmetic operations"],
-          "marks": 3,
-          "type": "theory"
-        },
-        "Q2": {
-          "topic": ["if and if-else statement", "while loop", "displaying patterns using loop"],
-          "marks": 4,
-          "type": "theory"
-        }
+  "imp_keywords": [
+    "control structures in Python",
+    "features of Python programming language",
+    "for loops",
+    "string functions",
+    "tuple operations",
+    "list operations",
+    "dictionary operations",
+    "set operations",
+    "file handling",
+    "math module in Python"
+  ],
+  "topic_frequency": {
+    "high": [
+      "control structures in Python",
+      "string functions",
+      "list operations",
+      "file handling"
+    ],
+    "less": [
+      "tuple operations",
+      "dictionary operations",
+      "set operations",
+      "math module in Python"
+    ]
+  },
+  "imp_qa": [
+    "Explain if-elif-else control structure in Python.",
+    "Explain features of Python programming language.",
+    "Explain for loop with example.",
+    "Write a program to find the sum of a series.",
+    "Write a program to calculate simple and compound interest.",
+    "Write a program that finds whether a given year is a leap year or not.",
+    "Write a program to find the number of times an element occurs in a list.",
+    "Differentiate between append() and extend() methods of list.",
+    "Write a program to randomly fill in 0s and 1s into a 4x4 2-dimensional list.",
+    "Explain addition of an item and modification of an existing item of a dictionary with example.",  
+    "Write a program to print Fibonacci sequence up to n numbers using recursion.",
+    "Explain functions of datetime module.",
+    "Write advantages of functions in Python.",
+    "List out various file accessing modes and explain each of them.",
+    "Explain math.exp(), math.floor(), math.pow().",
+    "Write a program to plot sine wave using matplotlib.",
+    "List out functions for writing to file operation and explain each.",
+    "Explain endswith(), find() string functions with example.",
+    "Write a program to read a date in the format DDMMYYYY and print the same date in MM-DD-YYYY format.",
+    "Explain how to create a Set in Python by giving an example.",
+    "Explain how to create a Dictionary in Python and concatenate two dictionaries into a new one.",   
+    "Write a Python program to perform operations on a list.",
+    "Explain a random module of Python with a suitable example.",
+    "Create a user-defined module with functions for finding the area of a square, circle, and rectangle.",
+    "Explain the user-defined function of Python with a suitable example.",
+    "Explain math module of Python with a suitable example.",
+    "Create a user-defined module with simple functions for arithmetic operations and access them in a program.",
+    "Explain file handling basic Python functions to open and close a text file.",
+    "Access string elements using the index operator with a suitable example.",
+    "Write a Python program that reads a text file and counts the occurrences of each alphabet."       
+  ],
+  "exam_difficulty": {
+    "Winter-2022": "medium",
+    "Summer-2023": "medium"
+  },
+  "all_questions": {
+    "Winter-2022": [
+      "Explain if-elif-else control structure in Python.",
+      "Explain type casting in Python.",
+      "Explain features of Python programming language.",
+      "Write a program to calculate simple and compound interest.",
+      "Explain for loop with example.",
+      "Write a program to find the sum of a series.",
+      "Write a program that finds whether a given year is a leap year or not.",
+      "List out different types of control statements in Python and explain any one.",
+      "Write a program to print a specific pattern.",
+      "Explain below string functions.",
+      "Write a program to find the number of times an element occurs in the list.",
+      "Differentiate between append() and extend() methods of list.",
+      "Write an automated censor program.",
+      "Write syntax of if-else and nested if-else.",
+      "Explain basic tuple operations with example.",
+      "Write a program to randomly fill in 0s and 1s into a 4x4 2-dimensional list.",
+      "Explain addition of an item and modification of existing item of dictionary with example.",     
+      "Match given statements with outputs.",
+      "Write a program to print Fibonacci sequence using recursion.",
+      "List out functions of datetime module.",
+      "Write advantages of function in Python.",
+      "Explain creation of user-defined module and procedure to import it with an example.",
+      "Explain following functions.",
+      "Write a program to plot sine wave using matplotlib.",
+      "List out various file accessing modes and explain each of them.",
+      "List out functions for writing to file operation and explain each.",
+      "Explain following string functions with examples.",
+      "Write a program to read and format a date.",
+    ],
+    "Summer-2023": [
+      "List out features and application of Python.",
+      "Explain Input and Output statements in Python.",
+      "List out arithmetic operations and build Python code.",
+      "List out the rules for defining variables and explain assignment operators in Python in detail.",
+      "Explain if and if-else statement with a suitable example.",
+      "Explain while loop with a suitable example.",
+      "Create a Python program to display specific patterns using loop concept.",
+      "Explain if-elif-else statement with a suitable example.",
+      "Explain break, continue, and pass statements with suitable examples.",
+      "Create a Python program to display specific patterns using loop concept.",
+      "Explain how to create a Set in Python by giving an example.",
+      "Explain how to create Dictionary in Python and concatenate dictionaries.",
+      "Write a Python program to perform operations on a list.",
+      "Explain how to create a tuple in Python by giving an example.",
+      "Explain how to create dictionaries in Python and check if a key exists.",
+      "Write a program to perform operations on a list.",
+      "List any six built-in functions of Python.",
+      "Explain a random module of Python with a suitable example.",
+      "Create a user-defined module with function for area calculation.",
+      "Explain user-defined functions of Python with a suitable example.",
+      "Explain math module of Python with an example.",
+      "Create a user-defined module with functions for arithmetic operations.",
+      "Explain file handling basic Python functions.",
+      "Explain accessing string elements using the index operator with example.",
+      "Write a Python program that reads a text file and count alphabet occurrences.",
+      "Explain file handling methods in Python.",
+      "Explain string methods in Python."
+    ]
+  },
+  "blueprint": {
+    "file1": {
+      "Q1": {
+        "topics": ["control structures in Python", "type casting in Python", "features of Python programming language"],
+        "marks": 14,
+        "type": "theory"
       },
-      "file2": {
-        "Q1": {
-          "topic": ["if-elif-else control structure", "type casting in Python", "features of Python programming language"],
-          "marks": 3,
-          "type": "theory"
-        },
-        "Q2": {
-          "topic": ["for loop", "sum of a series", "year is leap year or not"],
-          "marks": 4,
-          "type": "theory"
-        }
+      "Q2": {
+        "topics": ["for loops", "sum of series", "leap year calculation"],
+        "marks": 14,
+        "type": "theory"
+      },
+      "Q3": {
+        "topics": ["tuple operations", "dictionary operations", "automated censor program"],
+        "marks": 14,
+        "type": "theory"
+      },
+      "Q4": {
+        "topics": ["dictionary operations", "set operations", "random module in Python"],
+        "marks": 14,
+        "type": "theory"
+      },
+      "Q5": {
+        "topics": ["file handling", "string element access", "alphabet count in a text file"],
+        "marks": 14,
+        "type": "theory"
+      }
+    },
+    "file2": {
+      "Q1": {
+        "topics": ["features and application of Python", "Input and Output statements", "arithmetic operations"],
+        "marks": 14,
+        "type": "theory"
+      },
+      "Q2": {
+        "topics": ["if and if-else statement", "while loop", "patterns using loops"],
+        "marks": 14,
+        "type": "theory"
+      },
+      "Q3": {
+        "topics": ["Set creation", "Dictionary creation", "operations on a list"],
+        "marks": 14,
+        "type": "theory"
+      },
+      "Q4": {
+        "topics": ["built-in functions", "random module", "user-defined module with area functions"],  
+        "marks": 14,
+        "type": "theory"
+      },
+      "Q5": {
+        "topics": ["file handling functions", "string element access", "alphabet count in a text file"],
+        "marks": 14,
+        "type": "theory"
       }
     }
   }
+}

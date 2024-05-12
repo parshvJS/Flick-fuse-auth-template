@@ -34,18 +34,18 @@ import { signOut, useSession } from "next-auth/react";
 import { usePathname } from "next/navigation";
 
 type Menu = {
-  label: string;
-  name: string;
-  icon: React.ReactNode;
-  submenu?: Submenu[];
-  href?: string;
-};
+  label: string
+  name: string
+  icon: React.ReactNode
+  submenu?: Submenu[]
+  href: string
+}
 
 type Submenu = {
-  name: string;
-  icon: React.ReactNode;
-  href: string;
-};
+  name: string
+  icon: React.ReactNode
+  href: string
+}
 
 export default function Sidebar({ children }: { children: React.ReactNode }) {
   const { data: session, status } = useSession();

@@ -26,7 +26,7 @@ import { Loader2 } from "lucide-react"
 import { signIn } from "next-auth/react"
 
 
-function page() {
+function Page() {
   const [username, setUsername] = useState('') // for username state
   const [usernameInfo, setUsernameInfo] = useState('Enter Username !') // for any info related to username available or not
   const [usernameAvail, setUsernameAvail] = useState(false) // flag shows username available or not
@@ -60,7 +60,9 @@ function page() {
 
       try {
         console.log(username);
-        const res = await axios.get(`/api/checkUsernameUnique?username=${username}`)
+        const res = await axios.post(`/api/checkUsernameUnique`,{
+          username
+        })
         let message = res.data.message
         console.log(res.data);
 
@@ -234,4 +236,4 @@ function page() {
 };
 
 
-export default page
+export default Page

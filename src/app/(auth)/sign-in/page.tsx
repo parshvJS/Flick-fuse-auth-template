@@ -120,7 +120,7 @@ const Login = () => {
                                 )}
                             </Button>
                             <div className="flex gap-2">
-                                <p>Don't have Account ?</p>
+                                <p>Dont have Account ?</p>
                                 <Link href={`/sign-up`}>
                                     <b>Sign Up</b>
                                 </Link>

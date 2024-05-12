@@ -22,10 +22,10 @@ function createPromptFromObject(examObject: Record<string, string>): string {
      },
       "imp_qa": [],    // Array of most asked questions in all exam papers
       "exam_difficulty":{
-     "exam1":"easy", //and go on for all objects
+     "exam1":"easy", //and go on for all objects 
      },
      "all_questions" :{
-     "exam1":[],//all question in exam 1 object of exam_paper 
+     "exam1":[],//array of all question in exam 1 object of exam_paper
      //go on for rest
      },
     "blueprint":{
