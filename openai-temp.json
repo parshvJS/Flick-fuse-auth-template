@@ -179,3 +179,29 @@
     }
   }
 }
+{
+  "_id": "664611a6f4813b5112dee0be",
+  "imp_keywords": "[\"Python\",\"Arithmetic operations\",\"Control structures\",\"Loop concepts\",\"Data structures\",\"File handling\",\"Functions\",\"Modules\",\"String methods\",\"List operations\",\"Dictionary operations\",\"Set operations\"]",
+  "high_topic_frequency": "[\"Control structures\",\"Loop concepts\",\"File handling\",\"Functions\"]",
+  "low_topic_frequency": "[\"Set operations\",\"String methods\",\"List operations\"]",
+  "imp_qa": "[\"Explain if-elif-else control structure in Python\",\"Explain features of Python programming language\",\"Write a program to calculate simple and compound interest\",\"Explain for loop with example\",\"Write a program to find the sum of a series\",\"Write a program to find whether a given year is a leap year or not\",\"Write a program to find the number of times an element occurs in the list\",\"Explain basic tuple operations with example\",\"Write a program to print Fibonacci sequence up to n numbers using recursion\",\"Explain following functions: math.exp(), math.floor(), math.pow()\"]",
+  "exam_difficulty": "{\"exam1\":\"easy\",\"exam2\":\"easy\"}",
+  "all_questions": "{\"exam1\":[\"Q.1 (a) List out features and application of Python\",\"Q.1 (b) Explain Input and Output statements in Python by giving examples\",\"Q.1 (c) List out arithmetic operations\",\"Q.2 (a) Explain if and if-else statement with a suitable example\",\"Q.2 (b) Explain while loop with a suitable example\",\"Q.2 (c) Create a Python program to display patterns using loop concept\",\"Q.3 (a) Explain how to create a Set in Python by giving example\",\"Q.3 (b) Explain how to create Dictionary in Python\",\"Q.3 (c) Write a Python program to perform operations on the list\",\"Q.4 (a) List any six built-in functions of Python\",\"Q.4 (b) Explain a random module of Python with a suitable example\",\"Q.4 (c) Create a user-defined module with functions for finding the area of shapes\",\"Q.5 (a) Explain file handling basic Python function to open and close the text file\",\"Q.5 (b) Explain to access string elements using index operator with example\",\"Q.5 (c) Write a Python program that reads a text file and counts the occurrences of each alphabet in the file\"],\"exam2\":[\"Q.1 (a) Explain if-elif-else control structure in Python\",\"Q.1 (b) Explain type casting in Python\",\"Q.1 (c) Explain features of Python programming language\",\"Q.2 (a) Explain for loop with example\",\"Q.2 (b) Write a program to find the sum of a series\",\"Q.2 (c) Write a program that finds whether a given year is a leap year or not\",\"Q.3 (a) Write a program to find the number of times an element occurs in the list\",\"Q.3 (b) Differentiate between append() and extend() methods of list\",\"Q.3 (c) Write an automated censor program that reads the text from a file\",\"Q.4 (a) Explain addition of an item and modification of existing item of dictionary with example\",\"Q.4 (b) Match statements with output for given sets\",\"Q.4 (c) Write a program to print Fibonacci sequence using recursion\",\"Q.5 (a) Explain following functions: math.exp(), math.floor(), math.pow()\",\"Q.5 (b) Write a program to plot sine wave using matplotlib\",\"Q.5 (c) List out various file accessing modes and explain each of them\"]}",
+  "blueprint": "{\"file1\":{\"Q1\":{\"topics\":[\"Python\",\"Arithmetic operations\",\"Control structures\"],\"marks\":3,\"type\":\"Theory\"},\"Q2\":{\"topics\":[\"Loop concepts\"],\"marks\":4,\"type\":\"Theory\"},\"Q3\":{\"topics\":[\"Data structures\"],\"marks\":7,\"type\":\"Practical\"},\"Q4\":{\"topics\":[\"Functions\",\"Modules\"],\"marks\":7,\"type\":\"Practical\"},\"Q5\":{\"topics\":[\"File handling\",\"String methods\"],\"marks\":7,\"type\":\"Practical\"}},\"file2\":{\"Q1\":{\"topics\":[\"Python\",\"Control structures\"],\"marks\":3,\"type\":\"Theory\"},\"Q2\":{\"topics\":[\"Loop concepts\"],\"marks\":4,\"type\":\"Theory\"},\"Q3\":{\"topics\":[\"List operations\"],\"marks\":7,\"type\":\"Practical\"},\"Q4\":{\"topics\":[\"Dictionary operations\"],\"marks\":7,\"type\":\"Practical\"},\"Q5\":{\"topics\":[\"File handling\",\"String methods\"],\"marks\":7,\"type\":\"Practical\"}}}",
+  "pdf_url": [
+      "http://res.cloudinary.com/dkl9wgs72/image/upload/v1715868023/bbccmmbhdffhukc6ezdy.pdf",
+      "http://res.cloudinary.com/dkl9wgs72/image/upload/v1715868036/tj1cgb1dpk1vlp63x0lv.pdf"
+  ],
+  "exam_name": "Relational Database managamenet systeme",
+  "username": "zuzyhoj",
+  "file_count": 2,
+  "imp_count": 10,
+  "total_qa": 30,
+  "file_name": [
+      "exam-temp-1.pdf",
+      "exam-temp-2.pdf"
+  ],
+  "createdAt": "2024-05-16T14:01:10.472Z",
+  "updatedAt": "2024-05-16T14:01:10.472Z",
+  "__v": 0
+}

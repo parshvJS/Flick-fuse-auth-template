@@ -14,7 +14,9 @@ const uploadOnCloudinary = async (localFilePath:string) => {
       const response = await cloudinary.uploader.upload(localFilePath, {
           resource_type: 'auto'
       });
-      return response.secure_url;
+      console.log(response.url,"is pdf ------------------------------------------");
+      
+      return response.url;
   } catch (error) {
       fs.unlinkSync(localFilePath); 
       return null;

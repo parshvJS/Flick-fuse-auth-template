@@ -73,7 +73,7 @@ function Page() {
   return (
     <div className="flex justify-center items-center min-h-screen bg-gray-50">
       <div className="w-full max-w-md p-8 bg-white shadow-lg rounded-lg">
-        <h1 className="text-2xl font-bold text-center mb-2">Welcome To FlickFuse</h1>
+        <h1 className="text-2xl font-bold text-center mb-2">Welcome To PaperBrock.</h1>
         <h2 className="text-lg text-center text-gray-600 mb-6">Enter Your Verification Code</h2>
         <p className="text-center text-gray-600 mb-6">
           Please check your email for the verification code weve sent you.

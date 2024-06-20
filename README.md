@@ -1,7 +1,7 @@
 This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
 ## Getting Started
-
+test Url : http://localhost:3000/exam/zuzyhoj/Relational+Database+managamenet+systeme/664611a6f4813b5112dee0be
 First, run the development server:
 
 ```bash

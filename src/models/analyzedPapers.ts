@@ -11,11 +11,15 @@ export interface Exam extends Document {
     blueprint: string;
     pdf_url: string[];
     exam_name: string;
-    username:string
+    username: string;
+    file_count: number;
+    imp_count: number;
+    total_qa: number;
+    file_name:String[]
 }
 
 // Define the schema for analyzed papers
-const analyzedPaperSchema = new mongoose.Schema({
+const analyzedPaperSchema:Schema<Exam> = new mongoose.Schema({
     imp_keywords: {
         type: String,
     },
@@ -45,8 +49,20 @@ const analyzedPaperSchema = new mongoose.Schema({
         type: String,
         required: true, // Ensure exam name is required
     },
-    username:{
-        type:String
+    username: {
+        type: String
+    },
+    file_count: {
+        type:Number
+    },
+    imp_count: {
+        type:Number
+    },
+    total_qa: {
+        type:Number
+    },
+    file_name:{
+        type:[String]
     }
 }, { timestamps: true });
 

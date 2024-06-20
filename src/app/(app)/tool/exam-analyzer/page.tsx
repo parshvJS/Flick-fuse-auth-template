@@ -29,6 +29,7 @@ import upload from '@/assets/upload.svg'
 import Image from 'next/image';
 import { Card } from '@/components/ui/card';
 import { useRouter } from 'next/navigation';
+import axios from 'axios';
 
 function formatBytes(bytes: number): string {
   const sizes = ['Bytes', 'KB', 'MB', 'GB', 'TB'];
@@ -120,7 +121,7 @@ function Page() {
 
     // Add each file to the FormData
     files.forEach((file, index) => {
-      form.append( `file-${index+1}`, file); // Use unique keys for each file
+      form.append(`file`, file); // Use unique keys for each file
     });
 
     console.log("Session:", session); // Check the session data
@@ -136,14 +137,11 @@ function Page() {
     }
 
     try {
-      const res = await fetch('/api/exam-analyzer', {
-        method: 'POST',
-        body: form,
-      });
-
-      const result = await res.json();
-      console.log('Response:', result.data);
-      router.replace(`/exam/${session?.user?.username}/${e.examName.replaceAll(" ", "+")}`)
+      // const res = await fetch('/api/get-file', form);
+      const { data } = await axios.post('/api/exam-analyzer', form)
+      // const result = await res.json();
+      console.log('Response:', data.data._id);
+      router.replace(`/exam/${session?.user?.username}/${e.examName.replaceAll(" ", "+")}/${data.data.id}`)
     } catch (error) {
       console.error('Error submitting files:', error);
     }
@@ -163,6 +161,7 @@ function Page() {
   return (
 
     <div className='p-4'>
+ 
       {/* heading */}
       <div>
         <p className='text-lg md:text-md font-bold text-blue-600'>Exam Analyzer</p>

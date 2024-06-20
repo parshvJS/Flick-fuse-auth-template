@@ -5,8 +5,9 @@ import { unlinkSync, writeFile } from "fs";
 import { NextRequest, NextResponse } from "next/server";
 import { join } from "path";
 import PdfParse from "pdf-parse";
-import analayzedPaperModel from "@/models/analyzedPapers";
+import analayzedPaperModel, { Exam } from "@/models/analyzedPapers";
 import { dbConnect } from "@/lib/dbConnect";
+import { AnalyzedExam } from "@/types/analyzed-paper";
 
 // Utility function that removes unwanted text from data
 const removeHeaderFooter = (text: string, threshold = 0.01) => {
@@ -103,31 +104,65 @@ export async function POST(req: NextRequest) {
 
     console.log("Analyzing extracted data...");
     const analayzedData = await getResponseFromText(exam_paper);
-    const cleanedAnalayzedData = analayzedData?.replaceAll('`','').replaceAll('javascript','').replaceAll('js','');
-    console.log(cleanedAnalayzedData,"is here -----------------------------------------------------------",analayzedData,"is not ```````````````````````````````````````");
-    
+    const cleanedAnalayzedData = analayzedData?.replaceAll('`', '').replaceAll('javascript', '').replaceAll('js', '');
+    console.log(cleanedAnalayzedData, "is here -----------------------------------------------------------", analayzedData, "is not ```````````````````````````````````````");
+
     console.log("Saving analyzed data to database...");
-    const analyzedJson = JSON.parse(cleanedAnalayzedData!);
+    const analyzedJson: AnalyzedExam = JSON.parse(cleanedAnalayzedData!);
     console.log(analyzedJson, "hhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhh");
     console.log(formData, "hhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhh");
 
-    const newExamAnalyzed = new analayzedPaperModel({
+
+
+    let total_question = 0;
+    let file_name_list: String[] = []
+    Object.values(analyzedJson.all_questions).forEach((fileQa: string[]) => {
+      total_question += fileQa.length;
+    });
+    Object.keys(exam_paper).forEach(fileName => {
+      file_name_list.push(fileName)
+    });
+
+    const dummy = {
       pdf_url,
       imp_keywords: JSON.stringify(analyzedJson.imp_keywords),
       high_topic_frequency: JSON.stringify(analyzedJson.topic_frequency.high),
-      low_topic_frequency: JSON.stringify(analyzedJson.topic_frequency.low),
+      low_topic_frequency: JSON.stringify(analyzedJson.topic_frequency.less),
       exam_difficulty: JSON.stringify(analyzedJson.exam_difficulty),
       all_questions: JSON.stringify(analyzedJson.all_questions),
       blueprint: JSON.stringify(analyzedJson.blueprint),
       imp_qa: JSON.stringify(analyzedJson.imp_qa),
       exam_name: formData.get('name'),
-      username: formData.get('username')
+      username: formData.get('username'),
+      file_count: pdf_url.length || 0,
+      imp_count: analyzedJson?.imp_qa?.length || 0,
+      total_qa: total_question,
+      file_name: file_name_list
+    }
+
+    console.log(dummy, "is geting insertttttttttttttttttttttttttttttttttttttttttt");
+
+    const newExamAnalyzed = new analayzedPaperModel({
+      pdf_url,
+      imp_keywords: JSON.stringify(analyzedJson.imp_keywords),
+      high_topic_frequency: JSON.stringify(analyzedJson.topic_frequency.high),
+      low_topic_frequency: JSON.stringify(analyzedJson.topic_frequency.less),
+      exam_difficulty: JSON.stringify(analyzedJson.exam_difficulty),
+      all_questions: JSON.stringify(analyzedJson.all_questions),
+      blueprint: JSON.stringify(analyzedJson.blueprint),
+      imp_qa: JSON.stringify(analyzedJson.imp_qa),
+      exam_name: formData.get('name'),
+      username: formData.get('username'),
+      file_count: pdf_url.length || 0,
+      imp_count: analyzedJson?.imp_qa?.length || 0,
+      total_qa: total_question,
+      file_name: file_name_list
     });
 
     const response = await newExamAnalyzed.save();
     const resSend = {
-      id:response._id,
-      analayzedResponse:analayzedData
+      id: response._id,
+      analayzedResponse: analayzedData
     }
     if (!response) {
       console.log("Error saving to database");
@@ -136,6 +171,8 @@ export async function POST(req: NextRequest) {
         message: "Can't Provide you data right now ! Please try After Some Time !",
       });
     }
+
+    // add id of document in response
 
     console.log("Analysis and saving successful!");
     return NextResponse.json({

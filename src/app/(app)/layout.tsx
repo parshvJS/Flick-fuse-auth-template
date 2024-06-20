@@ -32,6 +32,7 @@ import React, { useEffect, useState } from "react";
 import { Button } from "@/components/ui/button";
 import { signOut, useSession } from "next-auth/react";
 import { usePathname } from "next/navigation";
+import { QueryClientProvider } from "react-query";
 
 type Menu = {
   label: string
@@ -320,11 +321,11 @@ export default function Sidebar({ children }: { children: React.ReactNode }) {
       </div>
 
       {/* child  */}
-      <ScrollArea className="w-full h-screen">
+      <ScrollArea className="w-full h-full">
 
-      <div className="w-full h-screen md:p-0 px-4">
-        {children}
-      </div>
+        <div className="w-full h-screen md:p-0 px-4">
+          {children}
+        </div>
       </ScrollArea>
 
     </div>

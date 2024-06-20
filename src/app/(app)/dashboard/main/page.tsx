@@ -1,15 +1,15 @@
 'use client'
-import { useSession, signIn, signOut } from 'next-auth/react';
 import { useEffect, useState } from 'react';
 import search from '@/assets/search.svg'
 import Image from 'next/image';
 import { ArrowUpRight, Search } from 'lucide-react';
-import { Input } from '@/components/ui/input';
 import { useDebounceCallback } from 'usehooks-ts'
 import { Button } from '@/components/ui/button';
 import { useToast } from '@/components/ui/use-toast';
 import axios from 'axios';
 import { useRouter } from 'next/navigation';
+import { Card, } from '@/components/ui/card';
+import { getRandomBlueShade } from '@/utils/getRandomBlueColor';
 
 const UserProfile = () => {
   // input state for search
@@ -21,6 +21,9 @@ const UserProfile = () => {
   // flag to show redirect card to search result
   const [showAnalyzeLink, setShowAnalyzeLink] = useState(false)
 
+  // feed state
+
+  const [feedData, setFeedData] = useState([])
   const debouncedUsername = useDebounceCallback(setSeachValue, 1000)
   const [loading, setLoading] = useState(false);
   const { toast } = useToast();
@@ -69,6 +72,28 @@ const UserProfile = () => {
     }
     getSearchResult()
   }, [searchValue])
+
+
+
+  // get feed
+
+  useEffect(() => {
+    async function getFeedData() {
+      try {
+        const res = (await axios.get("/api/get-home-feed?page=1?limit=10")).data.data;
+        setFeedData(res);
+
+      } catch (error: any) {
+        toast({
+          title: "Can't Cook Feed For You",
+          variant: "destructive"
+        })
+        throw new Error(error.message)
+      }
+    }
+
+    getFeedData()
+  }, [])
 
   return (
     <div className=' p-1 md:p-4'>
@@ -136,7 +161,25 @@ const UserProfile = () => {
 
       </div>
 
+      {/* cards */}
+      <div>
+        {feedData &&
+          <div className='flex flex-col md:flex-row gap-2 w-full justify-center'>
+            {
+              feedData.map((cardData) => {
+                const color = getRandomBlueShade();
+                return <Card className='w-full md:w-1/4'>
+                  {/* bg  */}
+                  <div style={{ backgroundColor: color }} className={`w-full h-full bg-[${color}]`}>
+                    dsfsd
+                  </div>
+                </Card>
+              })
+            }
 
+          </div>
+        }
+      </div>
 
     </div>
   );
